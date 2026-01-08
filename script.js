@@ -5,44 +5,66 @@ const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const navMenu = document.querySelector('.nav-menu');
 
 if (mobileMenuToggle) {
+const navActions = document.querySelector('.nav-actions');
+    
     mobileMenuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
+        if (navActions) navActions.classList.toggle('active');
         mobileMenuToggle.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
     });
 }
 
 // ===================================
 // Testimonials Slider
 // ===================================
-const prevBtn = document.getElementById('prevTestimonial');
-const nextBtn = document.getElementById('nextTestimonial');
-const testimonialsTrack = document.getElementById('testimonialsTrack');
-let currentSlide = 0;
+const track = document.querySelector(".slider-track");
+const slides = document.querySelectorAll(".slide");
 
-if (prevBtn && nextBtn && testimonialsTrack) {
-    const testimonialCards = testimonialsTrack.querySelectorAll('.testimonial-card');
-    const totalSlides = testimonialCards.length;
+let index = 0;
+
+function getVisibleSlides() {
+    if (window.innerWidth <= 768) return 1;
+    if (window.innerWidth <= 1024) return 2;
+    return 3;
+}
 
     function updateSlider() {
-        const slideWidth = testimonialCards[0].offsetWidth + 32; // card width + gap
-        testimonialsTrack.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    if (track && slides.length > 0) {
+        const slideWidth = slides[0].offsetWidth;
+        const style = window.getComputedStyle(track);
+        const gap = parseFloat(style.gap) || 0;
+        track.style.transform = `translateX(-${index * (slideWidth + gap)}px)`;
     }
+}
 
-    prevBtn.addEventListener('click', () => {
-        currentSlide = currentSlide > 0 ? currentSlide - 1 : totalSlides - 1;
+function nextSlide() {
+    if (!track || slides.length === 0) return;
+    const visible = getVisibleSlides();
+    if (index >= slides.length - visible) {
+        index = 0;
+    } else {
+        index++;
+    }
         updateSlider();
-    });
+}
 
-    nextBtn.addEventListener('click', () => {
-        currentSlide = currentSlide < totalSlides - 1 ? currentSlide + 1 : 0;
+function prevSlide() {
+    if (!track || slides.length === 0) return;
+    const visible = getVisibleSlides();
+    if (index <= 0) {
+        index = slides.length - visible;
+    } else {
+        index--;
+    }
         updateSlider();
-    });
+}
 
-    // Auto-play slider
-    setInterval(() => {
-        currentSlide = currentSlide < totalSlides - 1 ? currentSlide + 1 : 0;
+window.addEventListener("resize", updateSlider);
+
+// Initialize slider on page load
+if (track && slides.length > 0) {
         updateSlider();
-    }, 5000);
 }
 
 // ===================================

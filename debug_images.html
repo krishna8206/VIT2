@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            background: #333;
+        }
+
+        .img-container {
+            background: white;
+            padding: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            border: 1px solid #ccc;
+        }
+
+        h2 {
+            color: white;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="img-container">
+        <h2>Target (Image 1 - Desired)</h2>
+        <img src="target_ref.png" />
+        <!-- These are in artifacts, might not work. Re-copy if needed, but for now checking checked assets -->
+    </div>
+    <div class="img-container">
+        <h2>Current (Image 2 - Status)</h2>
+        <img src="current_ref.png" />
+    </div>
+    <div class="img-container">
+        <h2>Asset Used in Step 147 (uploaded_image_1_1767800920024.png)</h2>
+        <img src="check_asset_1.png" />
+    </div>
+    <div class="img-container">
+        <h2>Other Asset from Step 145 (uploaded_image_0_1767800920024.png)</h2>
+        <img src="check_asset_0.png" />
+    </div>
+</body>
+
+</html>
