@@ -1670,7 +1670,7 @@ ul {
     margin-top: -50px;
 }
 
-.waterfall-diagram img{
+.waterfall-diagram img {
     margin-top: -26px;
 }
 
@@ -1997,8 +1997,13 @@ ul {
 
 @media (max-width: 768px) {
     .integrations-section {
-        padding-bottom: 250px;
-        /* Aggressively increased space to prevent overlap */
+        padding-bottom: 80px;
+        /* Standard padding */
+    }
+
+    .footer {
+        padding-bottom: 240px;
+        /* Space for fixed banner */
     }
 }
 
@@ -2320,19 +2325,16 @@ ul {
 
 @media (max-width: 768px) {
     .floating-cta {
-        bottom: 20px;
-        /* Floating above bottom */
-        left: 50%;
-        /* Center horizontally */
-        transform: translateX(-50%);
-        /* Center perfectly */
-        width: 95%;
-        /* Small margin on sides */
-        max-width: 400px;
-        /* Limit width */
-        border-radius: 24px;
-        /* Full rounded corners */
+        bottom: 0;
+        /* Dock to bottom */
+        left: 0;
+        transform: none;
+        width: 100%;
+        max-width: 100%;
+        border-radius: 24px 24px 0 0;
+        /* Rounded top only */
         padding: 12px;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
     }
 
     .floating-content {
