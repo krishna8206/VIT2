@@ -1840,6 +1840,8 @@ ul {
         /* Reset height on mobile */
         object-fit: contain !important;
         /* Prevent cropping */
+        margin-top: 0 !important;
+        /* Prevent clipping from negative margins */
     }
 }
 
