@@ -1833,6 +1833,14 @@ ul {
     .enrichment-features {
         flex-direction: column;
     }
+
+    .enrichment-full-img,
+    .waterfall-full-img {
+        height: auto !important;
+        /* Reset height on mobile */
+        object-fit: contain !important;
+        /* Prevent cropping */
+    }
 }
 
 @media (max-width: 480px) {
@@ -1997,13 +2005,9 @@ ul {
 
 @media (max-width: 768px) {
     .integrations-section {
-        padding-bottom: 80px;
-        /* Standard padding */
-    }
+        padding-bottom: 250px;
 
-    .footer {
-        padding-bottom: 240px;
-        /* Space for fixed banner */
+        /* Aggressively increased space to prevent overlap */
     }
 }
 
@@ -2325,16 +2329,19 @@ ul {
 
 @media (max-width: 768px) {
     .floating-cta {
-        bottom: 0 !important;
-        /* Dock to bottom */
-        left: 0 !important;
-        transform: none !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        border-radius: 24px 24px 0 0 !important;
-        /* Rounded top only */
+        bottom: 20px;
+        /* Floating above bottom */
+        left: 50%;
+        /* Center horizontally */
+        transform: translateX(-50%);
+        /* Center perfectly */
+        width: 95%;
+        /* Small margin on sides */
+        max-width: 400px;
+        /* Limit width */
+        border-radius: 24px;
+        /* Full rounded corners */
         padding: 12px;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
     }
 
     .floating-content {
